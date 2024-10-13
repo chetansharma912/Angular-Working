@@ -7,38 +7,67 @@
     <div class="row">
         <div class="col">
             <input type="text" class="form-control" placeholder="First Name" formControlName="firstname">
+            @if(showErrorMessage('firstname')) {
+                <small>Enter Valid First Name</small>
+            }
         </div>
         <div class="col">
             <input type="text" class="form-control" placeholder="Last Name" formControlName="lastname">
+            @if(showErrorMessage('lastname')) {
+                <small>Enter Valid Last Name</small>
+            }
         </div>
         <div class="col">
             <input type="password" class="form-control" placeholder="Password" formControlName="password">
+            @if(showErrorMessage('password')) {
+                <small>Enter Valid Password</small>
+            }
         </div>
     </div>
     <div class="row">
         <div class="col">
             <input type="text" class="form-control" placeholder="Email" formControlName="email">
+            @if(showErrorMessage('email')) {
+                <small>Enter Valid Email</small>
+            }
         </div>
         <div class="col">
             <select class="form-select" aria-label="Default select example" formControlName="country">
                 @for(country of countries;track country){
-                <option [value]="country">{{country}}</option>
+                    <option [value]="country">{{country}}</option>
                 }
             </select>
+            @if(showErrorMessage('country')) {
+                <small>Enter Valid Country</small>
+            }
         </div>
         <div class="col">
             <input type="file" class="form-control-file" id="exampleFormControlFile1" formControlName="document">
+            <br>
+            @if(showErrorMessage('document')) {
+                <small>Enter Valid Document</small>
+            }
         </div>
     </div>
     <div class="row">
         <div class="col">
             <input type="text" class="form-control" placeholder="Mobile" formControlName="mobile">
+            @if(showErrorMessage('mobile')) {
+                <small>Enter Valid Mobile Number</small>
+            }
         </div>
         <div class="col">
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Address" formControlName="address"></textarea>
+            @if(showErrorMessage('address')) {
+                <small>Enter Valid Address</small>
+            }
         </div>
         <div class="col">
-            <input type="range" class="form-control-range" max="100" min="0" id="formControlRange" formControlName="age">
+            <input type="range" class="form-control-range" max="100" min="0" id="formControlRange1" formControlName="age">
+            <br>
+            @if(showErrorMessage('age')) {
+                <small>Enter Valid Age</small>
+            }
         </div>
     </div>
     <div class="row">
@@ -46,34 +75,37 @@
             <!-- <label for="exampleFormControlSelect2">Hobbies : </label> -->
             <select multiple class="form-control" id="exampleFormControlSelect2" formControlName="hobbies">
                 @for(hobbie of hobbies;track hobbie){
-                <option [value]="hobbie">{{hobbie}}</option>
+                    <option [value]="hobbie">{{hobbie}}</option>
                 }
             </select>
+            @if(showErrorMessage('hobbies')) {
+                <small>Select Hobbies</small>
+            }
         </div>
         <div class="col">
             <label class="form-check-label" for="defaultCheck1">
                 Tamil
             </label>
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" formControlName="language">
+            <input class="form-check-input" type="checkbox" value="Tamil" id="defaultCheck1" formControlName="language">
             <br>
 
             <label class="form-check-label" for="defaultCheck1">
                 Hindi
             </label>
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" formControlName="language">
+            <input class="form-check-input" type="checkbox" value="Hindi" id="defaultCheck2" formControlName="language">
             <br>
 
             <label class="form-check-label" for="defaultCheck1">
                 Marathi
             </label>
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck4" formControlName="language">
+            <input class="form-check-input" type="checkbox" value="Marathi" id="defaultCheck4" formControlName="language">
             <br>
 
             <label class="form-check-label" for="defaultCheck1">
                 English
             </label>
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck3" checked formControlName="language">
-
+            <input class="form-check-input" type="checkbox" value="English" id="defaultCheck3" checked formControlName="language">
+            
         </div>
         <div class="col">
             <input class="form-check-input" type="radio" name="gender" value="Male" id="radio1" formControlName="gender">
@@ -92,7 +124,9 @@
             <label class="form-check-label" for="">
                 Others
             </label>
-
+            @if(showErrorMessage('gender')) {
+                <small>Select Gender</small>
+            }
         </div>
     </div>
     <div class="row">
@@ -100,21 +134,19 @@
             <input class="form-control" type="text" value="You are Human" placeholder="Readonly input here…" formControlName="human" readonly>
         </div>
         <div class="col">
-            <input type="range" class="form-control-range" id="formControlRange" formControlName="age">
+            <input type="text" class="form-control" id="formControlRange" formControlName="choice">
+            @if(showErrorMessage('choice')) {
+                <small>Select Choice</small>
+            }
         </div>
-        <div class="col" formControlName="numbers">
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="1" >
-                <label class="form-check-label" for="inlineCheckbox1">1</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="2">
-                <label class="form-check-label" for="inlineCheckbox2">2</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="3" >
-                <label class="form-check-label" for="inlineCheckbox3">3</label>
-            </div>
+        <div class="col" >
+            @for(nxs of numbers;track nxs){
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" [value]="nxs.name" (change)="addnumbers($event)">
+                    <label class="form-check-label" for="inlineCheckbox1">{{nxs.name}}</label>
+                </div>
+            }
+            
         </div>
     </div>
     <div class="row">
