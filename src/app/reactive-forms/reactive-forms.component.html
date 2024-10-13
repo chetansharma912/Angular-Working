@@ -63,7 +63,8 @@
             }
         </div>
         <div class="col">
-            <input type="range" class="form-control-range" max="100" min="0" id="formControlRange1" formControlName="age">
+            <input type="range" class="form-control-range" max="100" min="0" value="0" step="1" id="formControlRange1" formControlName="age">
+            {{ 'Age : '+reactiveForm.get('age')?.value }}
             <br>
             @if(showErrorMessage('age')) {
                 <small>Enter Valid Age</small>

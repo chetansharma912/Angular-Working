@@ -15,7 +15,7 @@ export class ReactiveFormsComponent {
 
   // nx=["1","2"];
   countries = [
-    'India',
+    'INDIA',
     'USA',
     'UK',
     'UAE'
@@ -31,18 +31,20 @@ export class ReactiveFormsComponent {
   numbers =  [
     { name: '1',  checked: false },
     { name: '2',  checked: false },
-  ]
+  ];
+
+  ageLabel:any="Age : -";
 
   reactiveForm: FormGroup =new FormGroup({
     firstname : new FormControl("", [
       Validators.required, 
-      Validators.pattern(/^[a-zA-Z ]+$/gm),
-      Validators.minLength(3), 
+      Validators.pattern(/^[a-zA-Z]{0,15}$/),
+      Validators.minLength(3)
       
     ]),
     lastname : new FormControl("", [
       Validators.required, 
-      Validators.pattern(/^[a-zA-Z ]+$/gm),
+      Validators.pattern(/^[a-zA-Z]{0,15}$/),
       Validators.minLength(3), 
       
     ]),
@@ -60,19 +62,19 @@ export class ReactiveFormsComponent {
       ]
     ),
     country: new FormControl(
-      "",
+      "INDIA",
       Validators.required
     ),
     document: new FormControl("", Validators.required),
     mobile: new FormControl("", [
         Validators.required, 
-        Validators.pattern(/^[0-9]+$/gm)
+        Validators.pattern(/^[0-9]{10}$/),
       ]
     ),
     address: new FormControl("", [
       Validators.required
     ]),
-    age: new FormControl("", Validators.required),
+    age: new FormControl("0", Validators.required),
     language: new FormControl(["Tamil"], Validators.required),
     hobbies :new FormControl("", Validators.required),
     gender : new FormControl("", Validators.required),
@@ -86,6 +88,17 @@ export class ReactiveFormsComponent {
   
 
   ngOnInit(){
+    // console.log(this.reactiveForm.get('age'))
+
+    // Password
+    // ^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$
+    
+    // Address
+    // ^\d+\s[A-Za-zÀ-ÖØ-öø-ÿ\s,.#-]+$
+    
+    // Name
+    // ^[A-Za-zÀ-ÖØ-öø-ÿ' -]+$
+
   }
 
   addnumbers(event:any){
