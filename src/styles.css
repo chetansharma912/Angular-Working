@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+.color-red {
+    color : red;
+}
+.color-blue {
+    color : blue;
+}
+.color-black {
+    color: black;
+}
+.color-white {
+    color: white;
+}
+.color-green {
+    color: green;
+}
+.color-brown {
+    color: brown;
+}
+.code {
+    background-color: #d8d8d8;
+    padding: 10px;
+    box-shadow: 0px 0px 0.5px 0.2px black;
+}
+.main-section {
+    margin-top: 10px;
+    border: 1px solid #e1e1e1;
+    padding: 20px;
+    box-shadow: 0px 0px 1px 1px #dfdfdf;
+}

@@ -1,0 +1,13 @@
+h1 {
+    margin: 5px;
+    text-align: center;
+    padding: 5px;
+    background-color: green;
+    color: white;
+    border: 2px solid black;
+}
+
+.list-group li:hover {
+    cursor: pointer;
+    background-color: aquamarine;
+}
